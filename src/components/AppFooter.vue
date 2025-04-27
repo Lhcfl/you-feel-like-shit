@@ -2,11 +2,17 @@
   <v-footer
     app
   >
-    <v-btn icon="mdi-weather-sunny" variant="flat" @click="app.theme = 'light'" />
-    <v-btn icon="mdi-weather-night" variant="flat" @click="app.theme = 'dark'" />
-    <v-btn icon="mdi-cellphone" variant="flat" @click="app.theme = 'follow-device'" />
-    <v-btn text="原网站" @click="gotoSource" />
-    <v-select v-model="app.lang" hide-details :items="langs" />
+    <div class="d-flex flex-column w-100">
+      <div class="d-flex w-100">
+        <v-btn icon="mdi-weather-sunny" size="small" variant="flat" @click="app.theme = 'light'" />
+        <v-btn icon="mdi-weather-night" size="small" variant="flat" @click="app.theme = 'dark'" />
+        <v-btn icon="mdi-cellphone" size="small" variant="flat" @click="app.theme = 'follow-device'" />
+        <v-select v-model="app.lang" density="compact" hide-details :items="langs" />
+      </div>
+      <div class="d-flex w-100">
+        <v-btn :text="`原网站: ${origin_href}`" @click="gotoSource" />
+      </div>
+    </div>
   </v-footer>
 </template>
 
@@ -20,7 +26,9 @@
     { title: '简体中文', value: 'zh-CN' },
   ]);
 
+  const origin_href = 'https://philome.la/jace_harr/you-feel-like-shit-an-interactive-self-care-guide/play/index.html'
+
   const gotoSource = () => {
-    window.open('https://philome.la/jace_harr/you-feel-like-shit-an-interactive-self-care-guide/play/index.html', '_blank')
+    window.open(origin_href, '_blank')
   }
 </script>
